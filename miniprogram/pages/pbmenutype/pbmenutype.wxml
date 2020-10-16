@@ -1,0 +1,36 @@
+<view class='adminPerson'>
+	<!-- 菜谱分类列表 (菜谱分类列表) -->
+	<view class='cpfllb'>
+		<block wx:for="{{recipeTypeLists}}" wx:key="id">
+			<view>
+				<text class="txt">{{item.typeName}}</text>
+				<text class="btn" style="background:#f1613c" bindtap="clickDel" data-index="{{index}}" data-id="{{item._id}}" >删除</text>
+				<text class="btn" style="background:#4578ff" bindtap="clickUpdata" data-index="{{index}}" data-id="{{item._id}}">修改</text>
+			</view>
+
+		</block>
+
+
+
+	</view>
+	<!--    页面 （菜谱添加分类） -->
+	<view class='cptjfl'>
+
+		<mp-cell prop="mobile" ext-class=" weui-cell_vcode">
+			<!-- 输入菜谱分类 -->
+			<input class="weui-input" placeholder="输入菜谱分类" bindinput="_addVal" value="{{addVal}}" />
+			<view slot="footer" class="weui-vcode-btn" bindtap="clickAdd">添加</view>
+		</mp-cell>
+	</view>
+	<!-- 修改页面  （菜谱修改分类）-->
+	<view class='cpxgfl'>
+
+		<mp-cell prop="mobile" ext-class=" weui-cell_vcode">
+			<!-- 输入菜谱分类 -->
+			<input value="" class="weui-input" placeholder="输入菜谱分类" value="{{updataVal}}" bindinput="updataVal" />
+			<view slot="footer" class="weui-vcode-btn" bindtap="_clickUpdata">修改</view>
+		</mp-cell>
+
+	</view>
+
+</view>

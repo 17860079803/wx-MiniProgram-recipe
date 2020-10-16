@@ -1,0 +1,40 @@
+<view>
+	<!-- 设置搜索栏 -->
+	<view class="search">
+		<view class="search_view">
+			<icon type="search"></icon>
+			<input placeholder="请输入关键字" bindinput="searchVal"></input>
+		</view>
+		<text bindtap="goRecipeList" data-tag="search">搜索</text>
+	</view>
+	<!-- 热门搜索  9个即可 -->
+	<view class="hotsearch">
+		<view class="hotsearch_title">
+			<text>热门搜索</text>
+		</view>
+		<view class="hotsearch_list">
+			<!-- 列表 -->
+			<block wx:for="{{hotSearch}}" wx:key="_id">
+				<view bindtap="goRecipeDetail" data-id="{{ item._id }}" data-nick-name="{{ item.userInfo.nickName}}" data-title="{{ item.recipeName }}">{{item.recipeName}}</view>
+			</block>
+		</view>
+	</view>
+	<!-- 近期搜索  存入缓存 -->
+	<view class="jqsearch">
+		<view class="jqsearch_title">
+			<text>近期搜索</text>
+		</view>
+		<view class="jqsearch_list">
+			<!-- 列表 -->
+			<block wx:if="{{ JinSearch.length >0 }}">
+				<view wx:for="{{JinSearch}}" wx:key="item" bindtap="goRecipeList" data-tag="search" data-title="{{item}}">{{item}}</view>
+			</block>
+			<block wx:else>
+				<view>
+					暂无记录
+				</view>
+			</block>
+
+		</view>
+	</view>
+</view>
